@@ -1,0 +1,78 @@
+﻿using Business.Abstract;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class GradesController : ControllerBase
+    {
+        IGradeService _gradeService;
+
+        public GradesController(IGradeService gradeService)
+        {
+            _gradeService = gradeService;
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add(Grade grade) 
+        {
+            var result = _gradeService.Add(grade);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update(Grade grade)
+        {
+            var result = _gradeService.Update(grade);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _gradeService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyid/{id}")]
+        public IActionResult GetById(int id)
+        {
+            var result = _gradeService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            var result = _gradeService.Delete(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+    }
+}
