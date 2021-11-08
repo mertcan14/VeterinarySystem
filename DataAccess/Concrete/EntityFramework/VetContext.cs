@@ -19,5 +19,9 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Animal> animals { get; set; }
         public DbSet<Genus> genus { get; set; }
         public DbSet<Grade> grades { get; set; }
+        public DbSet<Company> companies { get; set; }
+        public DbSet<HospitalCategory> hospitalCategories { get; set; }
+        public DbSet<HospitalizasyonBed> hospitalizasyonBeds { get; set; }
+        public DbSet<Hospitalizasyon> hospitalizasyons { get; set; }
     }
 }

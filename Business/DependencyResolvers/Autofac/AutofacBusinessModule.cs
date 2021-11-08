@@ -30,6 +30,18 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<GenusManager>().As<IGenusService>().SingleInstance();
             builder.RegisterType<EfGenusDal>().As<IGenusDal>().SingleInstance();
+
+            builder.RegisterType<CompanyManager>().As<ICompanyService>().SingleInstance();
+            builder.RegisterType<EfCompanyDal>().As<ICompanyDal>().SingleInstance();
+
+            builder.RegisterType<HospitalCategoryManager>().As<IHospitalCategoryService>().SingleInstance();
+            builder.RegisterType<EfHospitalCategoryDal>().As<IHospitalCategoryDal>().SingleInstance();
+
+            builder.RegisterType<HospitalizasyonBedManager>().As<IHospitalizasyonBedService>().SingleInstance();
+            builder.RegisterType<EfHospitalizasyonBedDal>().As<IHospitalizasyonBedDal>().SingleInstance();
+
+            builder.RegisterType<HospitalizasyonManager>().As<IHospitalizasyonService>().SingleInstance();
+            builder.RegisterType<EfHospitalizasyonDal>().As<IHospitalizasyonDal>().SingleInstance();
         }
     }
 }

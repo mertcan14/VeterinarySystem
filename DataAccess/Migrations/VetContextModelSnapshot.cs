@@ -83,6 +83,21 @@ namespace DataAccess.Migrations
                     b.ToTable("cities");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("companies");
+                });
+
             modelBuilder.Entity("Entities.Concrete.District", b =>
                 {
                     b.Property<int>("Id")
@@ -138,6 +153,64 @@ namespace DataAccess.Migrations
                     b.ToTable("grades");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.HospitalCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("hospitalCategories");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Hospitalizasyon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("HospitalizasyonBedId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HospitalizasyonBedId");
+
+                    b.ToTable("hospitalizasyons");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.HospitalizasyonBed", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("HospitalCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HospitalCategoryId");
+
+                    b.ToTable("hospitalizasyonBeds");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Address", b =>
                 {
                     b.HasOne("Entities.Concrete.District", "District")
@@ -164,6 +237,20 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Concrete.Animal", "Animal")
                         .WithMany("Genus")
                         .HasForeignKey("AnimalId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Hospitalizasyon", b =>
+                {
+                    b.HasOne("Entities.Concrete.HospitalizasyonBed", "HospitalizasyonBed")
+                        .WithMany("Hospitalizasyons")
+                        .HasForeignKey("HospitalizasyonBedId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.HospitalizasyonBed", b =>
+                {
+                    b.HasOne("Entities.Concrete.HospitalCategory", "HospitalCategory")
+                        .WithMany("HospitalizasyonBeds")
+                        .HasForeignKey("HospitalCategoryId");
                 });
 #pragma warning restore 612, 618
         }
