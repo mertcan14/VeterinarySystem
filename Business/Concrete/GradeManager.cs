@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,29 +21,29 @@ namespace Business.Concrete
         public IResult Add(Grade grade)
         {
             _gradeDal.Add(grade);
-            return new SuccessResult("Başarı ile eklendi.");
+            return new SuccessResult(Messages.AddedSuccess);
         }
 
         public IResult Delete(int id)
         {
             _gradeDal.Delete(_gradeDal.Get(g=> g.Id == id));
-            return new SuccessResult("Başarı ile silindi");
+            return new SuccessResult(Messages.DeletedSuccess);
         }
 
         public IResult GetAll()
         {
-            return new SuccessDataResult<List<Grade>>("Başarı ile listelendi.", _gradeDal.GetAll());
+            return new SuccessDataResult<List<Grade>>(Messages.ListedSuccess, _gradeDal.GetAll());
         }
 
         public IResult GetById(int id)
         {
-            return new SuccessDataResult<Grade>(_gradeDal.Get(g=> g.Id == id));
+            return new SuccessDataResult<Grade>(Messages.ListedSuccess,_gradeDal.Get(g=> g.Id == id));
         }
 
         public IResult Update(Grade grade)
         {
             _gradeDal.Update(grade);
-            return new SuccessResult("Başarı ile güncellendi.");
+            return new SuccessResult(Messages.UpdateSuccess);
         }
     }
 }

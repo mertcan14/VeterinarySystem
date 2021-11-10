@@ -8,10 +8,10 @@ namespace Business.Abstract
 {
     public interface ICompanyService
     {
-        Result Add(Company company);
-        Result Update(Company company);
-        Result Delete(int id);
-        Result GetById(int id);
-        Result GetAll();
+        IResult Add(Company company);
+        IResult Update(Company company);
+        IResult Delete(int id);
+        IResult GetById(int id);
+        IResult GetAll();
     }
 }

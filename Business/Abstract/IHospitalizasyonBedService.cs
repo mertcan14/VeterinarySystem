@@ -8,10 +8,11 @@ namespace Business.Abstract
 {
     public interface IHospitalizasyonBedService 
     {
-        Result Add(HospitalizasyonBed hospitalizasyonBed);
-        Result Update(HospitalizasyonBed hospitalizasyonBed);
-        Result Delete(int id);
-        Result GetById(int id);
-        Result GetAll();
+        IResult Add(HospitalizasyonBed hospitalizasyonBed);
+        IResult Update(HospitalizasyonBed hospitalizasyonBed);
+        IResult Delete(int id);
+        IResult GetById(int id);
+        IResult GetAll();
+        IResult GetByCategoryId(int categoryId);
     }
 }

@@ -8,10 +8,10 @@ namespace Business.Abstract
 {
     public interface IHospitalCategoryService
     {
-        Result Add(HospitalCategory hospitalCategory);
-        Result Update(HospitalCategory hospitalCategory);
-        Result Delete(int id);
-        Result GetById(int id);
-        Result GetAll();
+        IResult Add(HospitalCategory hospitalCategory);
+        IResult Update(HospitalCategory hospitalCategory);
+        IResult Delete(int id);
+        IResult GetById(int id);
+        IResult GetAll();
     }
 }

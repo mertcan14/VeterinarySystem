@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,32 +18,32 @@ namespace Business.Concrete
             _companyDal = companyDal;
         }
 
-        public Result Add(Company company)
+        public IResult Add(Company company)
         {
             _companyDal.Add(company);
-            return new SuccessResult("Başarı ile eklendi.");
+            return new SuccessResult(Messages.AddedSuccess);
         }
 
-        public Result Delete(int id)
+        public IResult Delete(int id)
         {
             _companyDal.Delete(_companyDal.Get(c=> c.Id==id));
-            return new SuccessResult("Başarı ile silindi.");
+            return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public Result GetAll()
+        public IResult GetAll()
         {
-            return new SuccessDataResult<List<Company>>("Başarı ile listelendi.",_companyDal.GetAll());
+            return new SuccessDataResult<List<Company>>(Messages.ListedSuccess,_companyDal.GetAll());
         }
 
-        public Result GetById(int id)
+        public IResult GetById(int id)
         {
-            return new SuccessDataResult<Company>("Başarı ile getirildi.", _companyDal.Get(c=> c.Id==id));
+            return new SuccessDataResult<Company>(Messages.ListedSuccess, _companyDal.Get(c=> c.Id==id));
         }
 
-        public Result Update(Company company)
+        public IResult Update(Company company)
         {
             _companyDal.Update(company);
-            return new SuccessResult("Başarı ile güncellendi.");
+            return new SuccessResult(Messages.UpdateSuccess);
         }
     }
 }

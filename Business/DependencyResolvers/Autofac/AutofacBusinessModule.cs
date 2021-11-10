@@ -42,6 +42,15 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<HospitalizasyonManager>().As<IHospitalizasyonService>().SingleInstance();
             builder.RegisterType<EfHospitalizasyonDal>().As<IHospitalizasyonDal>().SingleInstance();
+
+            builder.RegisterType<ExpenseManager>().As<IExpenseService>().SingleInstance();
+            builder.RegisterType<EfExpenseDal>().As<IExpenseDal>().SingleInstance();
+
+            builder.RegisterType<AccoutingManager>().As<IAccoutingService>().SingleInstance();
+            builder.RegisterType<EfAccoutingDal>().As<IAccoutingDal>().SingleInstance();
+
+            builder.RegisterType<InComeManager>().As<IInComeService>().SingleInstance();
+            builder.RegisterType<EfInComeDal>().As<IInComeDal>().SingleInstance();
         }
     }
 }

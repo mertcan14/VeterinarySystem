@@ -19,6 +19,21 @@ namespace DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Entities.Concrete.Accouting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("accoutings");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Address", b =>
                 {
                     b.Property<int>("Id")
@@ -118,6 +133,24 @@ namespace DataAccess.Migrations
                     b.ToTable("districts");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.Expense", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("expenses");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Genus", b =>
                 {
                     b.Property<int>("Id")
@@ -209,6 +242,24 @@ namespace DataAccess.Migrations
                     b.HasIndex("HospitalCategoryId");
 
                     b.ToTable("hospitalizasyonBeds");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.InCome", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inComes");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Address", b =>

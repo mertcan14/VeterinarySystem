@@ -9,11 +9,11 @@ namespace Business.Abstract
 {
     public interface IHospitalizasyonService
     {
-        Result Add(Hospitalizasyon hospitalizasyon);
-        Result Update(Hospitalizasyon hospitalizasyon);
-        Result Delete(int id);
-        Result GetById(int id);
-        Result GetAll();
-        Result BedAvailable(CheckBedAvailable checkBedAvailable);
+        IResult Add(Hospitalizasyon hospitalizasyon);
+        IResult Update(Hospitalizasyon hospitalizasyon);
+        IResult Delete(int id);
+        IResult GetById(int id);
+        IResult GetAll();
+        IResult BedAvailable(CheckBedAvailable checkBedAvailable);
     }
 }

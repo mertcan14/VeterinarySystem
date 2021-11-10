@@ -23,5 +23,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<HospitalCategory> hospitalCategories { get; set; }
         public DbSet<HospitalizasyonBed> hospitalizasyonBeds { get; set; }
         public DbSet<Hospitalizasyon> hospitalizasyons { get; set; }
+        public DbSet<Accouting> accoutings { get; set; }
+        public DbSet<InCome> inComes { get; set; }
+        public DbSet<Expense> expenses { get; set; }
     }
 }

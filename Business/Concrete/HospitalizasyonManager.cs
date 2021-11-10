@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,38 +19,38 @@ namespace Business.Concrete
             _hospitalizasyonDal = hospitalizasyonDal;
         }
 
-        public Result Add(Hospitalizasyon hospitalizasyon)
+        public IResult Add(Hospitalizasyon hospitalizasyon)
         {
             _hospitalizasyonDal.Add(hospitalizasyon);
-            return new SuccessResult("Başarı ile eklendi.");
+            return new SuccessResult(Messages.AddedSuccess);
         }
 
-        public Result BedAvailable(CheckBedAvailable checkBedAvailable)
+        public IResult BedAvailable(CheckBedAvailable checkBedAvailable)
         {
             var result = _hospitalizasyonDal.BedAvailable(checkBedAvailable.EntryDate, checkBedAvailable.ReleaseDate, checkBedAvailable.BedCategoryId);
-            return new SuccessDataResult<List<HospitalizasyonBed>>("Başarı ile listelendi.", result);
+            return new SuccessDataResult<List<HospitalizasyonBed>>(Messages.ListedSuccess, result);
         }
 
-        public Result Delete(int id)
+        public IResult Delete(int id)
         {
             _hospitalizasyonDal.Delete(_hospitalizasyonDal.Get(h=> h.Id == id));
-            return new SuccessResult("Başarı ile silindi.");
+            return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public Result GetAll()
+        public IResult GetAll()
         {
-            return new SuccessDataResult<List<Hospitalizasyon>>("Başarı ile listelendi.", _hospitalizasyonDal.GetAll());
+            return new SuccessDataResult<List<Hospitalizasyon>>(Messages.ListedSuccess, _hospitalizasyonDal.GetAll());
         }
 
-        public Result GetById(int id)
+        public IResult GetById(int id)
         {
-            return new SuccessDataResult<Hospitalizasyon>("Başarı ile getirildi.", _hospitalizasyonDal.Get(h=> h.Id == id));
+            return new SuccessDataResult<Hospitalizasyon>(Messages.ListedSuccess, _hospitalizasyonDal.Get(h=> h.Id == id));
         }
 
-        public Result Update(Hospitalizasyon hospitalizasyon)
+        public IResult Update(Hospitalizasyon hospitalizasyon)
         {
             _hospitalizasyonDal.Update(hospitalizasyon);
-            return new SuccessResult("Başarı ile güncellendi.");
+            return new SuccessResult(Messages.UpdateSuccess);
         }
     }
 }

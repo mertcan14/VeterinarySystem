@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,32 +18,32 @@ namespace Business.Concrete
             _hospitalCategoryDal = hospitalCategoryDal;
         }
 
-        public Result Add(HospitalCategory hospitalCategory)
+        public IResult Add(HospitalCategory hospitalCategory)
         {
             _hospitalCategoryDal.Add(hospitalCategory);
-            return new SuccessResult("Başarı ile eklendi.");
+            return new SuccessResult(Messages.AddedSuccess);
         }
 
-        public Result Delete(int id)
+        public IResult Delete(int id)
         {
             _hospitalCategoryDal.Delete(_hospitalCategoryDal.Get(h=> h.Id==id)) ;
-            return new SuccessResult("Başarı ile silindi.");
+            return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public Result GetAll()
+        public IResult GetAll()
         {
-            return new SuccessDataResult<List<HospitalCategory>>("Başarı ile listelendi.", _hospitalCategoryDal.GetAll());
+            return new SuccessDataResult<List<HospitalCategory>>(Messages.ListedSuccess, _hospitalCategoryDal.GetAll());
         }
 
-        public Result GetById(int id)
+        public IResult GetById(int id)
         {
-            return new SuccessDataResult<HospitalCategory>("Başarı ile getirildi.", _hospitalCategoryDal.Get(h=> h.Id == id));
+            return new SuccessDataResult<HospitalCategory>(Messages.ListedSuccess, _hospitalCategoryDal.Get(h=> h.Id == id));
         }
 
-        public Result Update(HospitalCategory hospitalCategory)
+        public IResult Update(HospitalCategory hospitalCategory)
         {
             _hospitalCategoryDal.Update(hospitalCategory);
-            return new SuccessResult("başarı ile güncellendi.");
+            return new SuccessResult(Messages.UpdateSuccess);
         }
     }
 }
