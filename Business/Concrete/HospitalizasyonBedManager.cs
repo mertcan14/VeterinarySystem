@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Business.Concrete
             _hospitalizasyonBedDal = hospitalizasyonBedDal;
         }
 
+        [ValidationAspect(typeof(HospitalizasyonBedValidator))]
         public IResult Add(HospitalizasyonBed hospitalizasyonBed)
         {
             _hospitalizasyonBedDal.Add(hospitalizasyonBed);
@@ -45,6 +48,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<HospitalizasyonBed>>(Messages.ListedSuccess, _hospitalizasyonBedDal.GetAll(h=> h.HospitalCategory.Id==categoryId));
         }
 
+        [ValidationAspect(typeof(HospitalizasyonBedValidator))]
         public IResult Update(HospitalizasyonBed hospitalizasyonBed)
         {
             _hospitalizasyonBedDal.Update(hospitalizasyonBed);

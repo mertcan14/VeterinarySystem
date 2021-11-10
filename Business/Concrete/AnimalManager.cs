@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Business.Concrete
             _animalDal = animalDal;
         }
 
+        [ValidationAspect(typeof(AnimalValidator))]
         public IResult Add(Animal animal)
         {
             _animalDal.Add(animal);
@@ -40,6 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Animal>(Messages.ListedSuccess, _animalDal.Get(a=> a.Id == id)) ;
         }
 
+        [ValidationAspect(typeof(AnimalValidator))]
         public IResult Update(Animal animal)
         {
             _animalDal.Update(animal);

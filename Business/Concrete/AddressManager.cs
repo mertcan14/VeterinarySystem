@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,7 +19,7 @@ namespace Business.Concrete
         {
             _addressDal = addressDal;
         }
-
+        [ValidationAspect(typeof(AddressValidator))]
         public IResult Add(Address address)
         {
             _addressDal.Add(address);
@@ -45,6 +47,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Address>(Messages.ListedSuccess, _addressDal.Get(a=> a.Id == id));
         }
 
+        [ValidationAspect(typeof(AddressValidator))]
         public IResult Update(Address address)
         {
             _addressDal.Update(address);

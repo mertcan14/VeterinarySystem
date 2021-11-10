@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,8 +21,16 @@ namespace Business.Concrete
             _cityDal = cityDal;
         }
 
+        [ValidationAspect(typeof(CityValidator))]
         public IResult Add(City city)
         {
+            //var result = ValidationTool.Validate(new CityValidator(), city);
+
+            //if (!result.Success)
+            //{
+             //   return result;
+            //}
+
             _cityDal.Add(city);
             return new SuccessResult(Messages.AddedSuccess);
         }
@@ -40,6 +51,7 @@ namespace Business.Concrete
             return new SuccessDataResult<City>(Messages.ListedSuccess,_cityDal.Get(c => c.Id == id));
         }
 
+        [ValidationAspect(typeof(CityValidator))]
         public IResult Update(City city)
         {
             _cityDal.Update(city);

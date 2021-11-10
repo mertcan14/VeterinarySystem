@@ -82,3 +82,4 @@ C:\Users\Mert1\source\repos\VeterinarySystem\WebAPI\bin\Debug\netcoreapp3.1\NSwa
 C:\Users\Mert1\source\repos\VeterinarySystem\WebAPI\bin\Debug\netcoreapp3.1\NSwag.Generation.AspNetCore.dll
 C:\Users\Mert1\source\repos\VeterinarySystem\WebAPI\bin\Debug\netcoreapp3.1\YamlDotNet.dll
 C:\Users\Mert1\source\repos\VeterinarySystem\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Mert1\source\repos\VeterinarySystem\WebAPI\bin\Debug\netcoreapp3.1\FluentValidation.dll

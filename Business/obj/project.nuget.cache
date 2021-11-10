@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YSd+uhyp2USPUis+OA1UkKYJo/ST2cKZ9qS839DHlzthkS4VXhPqO1rKgu/XjbJumb+cbJZxkPYSfjXzFhI/Zw==",
+  "dgSpecHash": "NbX6zOHFESybEq2gwwL5lyJjhKuqCxTNt4paazh7G2bNqLAhHT25Us46YXuoYkZHUyk9eQlgn1ib6+oXL4AZeg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mert1\\source\\repos\\VeterinarySystem\\Business\\Business.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Mert1\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
     "C:\\Users\\Mert1\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.0\\autofac.extras.dynamicproxy.6.0.0.nupkg.sha512",
     "C:\\Users\\Mert1\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
+    "C:\\Users\\Mert1\\.nuget\\packages\\fluentvalidation\\9.5.1\\fluentvalidation.9.5.1.nupkg.sha512",
     "C:\\Users\\Mert1\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Mert1\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\Mert1\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

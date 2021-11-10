@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,7 +19,7 @@ namespace Business.Concrete
         {
             _gradeDal = gradeDal;
         }
-
+        [ValidationAspect(typeof(GradeValidator))]
         public IResult Add(Grade grade)
         {
             _gradeDal.Add(grade);
@@ -40,6 +42,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Grade>(Messages.ListedSuccess,_gradeDal.Get(g=> g.Id == id));
         }
 
+        [ValidationAspect(typeof(GradeValidator))]
         public IResult Update(Grade grade)
         {
             _gradeDal.Update(grade);

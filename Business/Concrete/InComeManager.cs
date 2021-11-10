@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Business.Concrete
             _inComeDal = inComeDal;
         }
 
+        [ValidationAspect(typeof(InComeValidator))]
         public IResult Add(InCome inCome)
         {
             _inComeDal.Add(inCome);
@@ -40,6 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<InCome>(Messages.ListedSuccess, _inComeDal.Get(i=> i.Id==id));
         }
 
+        [ValidationAspect(typeof(InComeValidator))]
         public IResult Update(InCome inCome)
         {
             _inComeDal.Update(inCome);

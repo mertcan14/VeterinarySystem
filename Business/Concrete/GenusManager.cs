@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Business.Concrete
             _genusDal = genusDal;
         }
 
+        [ValidationAspect(typeof(GenusValidator))]
         public IResult Add(Genus genus)
         {
             _genusDal.Add(genus);
@@ -40,6 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Genus>(Messages.ListedSuccess, _genusDal.Get(g=> g.Id == id));
         }
 
+        [ValidationAspect(typeof(GenusValidator))]
         public IResult Update(Genus genus)
         {
             _genusDal.Update(genus);

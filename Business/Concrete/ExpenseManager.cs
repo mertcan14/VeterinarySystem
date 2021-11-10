@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Business.Concrete
             _expenseDal = expenseDal;
         }
 
+        [ValidationAspect(typeof(ExpenseValidator))]
         public IResult Add(Expense expense)
         {
             _expenseDal.Add(expense);
@@ -40,6 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Expense>(Messages.ListedSuccess, _expenseDal.Get(e=> e.Id==id));
         }
 
+        [ValidationAspect(typeof(ExpenseValidator))]
         public IResult Update(Expense expense)
         {
             _expenseDal.Update(expense);
