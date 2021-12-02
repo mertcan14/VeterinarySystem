@@ -14,5 +14,6 @@ namespace Entities.Concrete
         public string Definition { get; set; }
 
         public District District { get; set; }
+        public User User { get; set; }
     }
 }

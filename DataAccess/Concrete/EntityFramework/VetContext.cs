@@ -11,6 +11,7 @@ namespace DataAccess.Concrete.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=Veterinerlik; Trusted_Connection=true;");
+
         }
 
         public DbSet<City> cities { get; set; }
@@ -26,5 +27,13 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Accouting> accoutings { get; set; }
         public DbSet<InCome> inComes { get; set; }
         public DbSet<Expense> expenses { get; set; }
+        public DbSet<User> users { get; set; }
+        public DbSet<Customer> customers { get; set; }
+        public DbSet<Pet> pets { get; set; }
+        public DbSet<Gender> genders { get; set; }
+        public DbSet<Appointment> appointments { get; set; }
+        public DbSet<Category> categories { get; set; }
+        public DbSet<Product> products { get; set; }
+        public DbSet<Transactions> Transactions { get; set; }
     }
 }

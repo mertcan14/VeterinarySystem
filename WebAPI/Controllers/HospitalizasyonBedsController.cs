@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
         [HttpGet("delete/{id}")]
         public IActionResult Delete(int id)
         {
-            var result = _hospitalizasyonBedService.GetById(id);
+            var result = _hospitalizasyonBedService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);

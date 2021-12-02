@@ -26,10 +26,16 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId")
+                        .IsUnique();
 
                     b.ToTable("accoutings");
                 });
@@ -56,9 +62,14 @@ namespace DataAccess.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DistrictId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("addresses");
                 });
@@ -81,6 +92,47 @@ namespace DataAccess.Migrations
                     b.HasIndex("GradeId");
 
                     b.ToTable("animals");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("AppointmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Definition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PetId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("appointments");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("Entities.Concrete.City", b =>
@@ -111,6 +163,32 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("companies");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("customers");
                 });
 
             modelBuilder.Entity("Entities.Concrete.District", b =>
@@ -149,6 +227,21 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("expenses");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Gender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("genders");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Genus", b =>
@@ -231,6 +324,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("HospitalCategoryId")
                         .HasColumnType("int");
 
@@ -238,6 +334,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("HospitalCategoryId");
 
@@ -262,11 +360,140 @@ namespace DataAccess.Migrations
                     b.ToTable("inComes");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.Pet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BirthYear")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GenderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GenusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MicrochipNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PetId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("GenderId");
+
+                    b.HasIndex("GenusId");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("pets");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TransactionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("TransactionsId");
+
+                    b.ToTable("products");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Transactions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("users");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Accouting", b =>
+                {
+                    b.HasOne("Entities.Concrete.Company", "Company")
+                        .WithOne("Accouting")
+                        .HasForeignKey("Entities.Concrete.Accouting", "CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Entities.Concrete.Address", b =>
                 {
                     b.HasOne("Entities.Concrete.District", "District")
                         .WithMany("Addresses")
                         .HasForeignKey("DistrictId");
+
+                    b.HasOne("Entities.Concrete.User", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Animal", b =>
@@ -274,6 +501,20 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Concrete.Grade", "Grade")
                         .WithMany("Animals")
                         .HasForeignKey("GradeId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Appointment", b =>
+                {
+                    b.HasOne("Entities.Concrete.Pet", "Pet")
+                        .WithMany("Appointments")
+                        .HasForeignKey("PetId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Customer", b =>
+                {
+                    b.HasOne("Entities.Concrete.User", "User")
+                        .WithMany("Customers")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Entities.Concrete.District", b =>
@@ -299,9 +540,50 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.Concrete.HospitalizasyonBed", b =>
                 {
+                    b.HasOne("Entities.Concrete.Company", "Company")
+                        .WithMany("HospitalizasyonBeds")
+                        .HasForeignKey("CompanyId");
+
                     b.HasOne("Entities.Concrete.HospitalCategory", "HospitalCategory")
                         .WithMany("HospitalizasyonBeds")
                         .HasForeignKey("HospitalCategoryId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Pet", b =>
+                {
+                    b.HasOne("Entities.Concrete.Customer", "Customer")
+                        .WithMany("Pets")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("Entities.Concrete.Gender", "Gender")
+                        .WithMany("Pets")
+                        .HasForeignKey("GenderId");
+
+                    b.HasOne("Entities.Concrete.Genus", "Genus")
+                        .WithMany("Pets")
+                        .HasForeignKey("GenusId");
+
+                    b.HasOne("Entities.Concrete.Pet", null)
+                        .WithMany("Pets")
+                        .HasForeignKey("PetId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Product", b =>
+                {
+                    b.HasOne("Entities.Concrete.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("Entities.Concrete.Transactions", "Transactions")
+                        .WithMany("Products")
+                        .HasForeignKey("TransactionsId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Transactions", b =>
+                {
+                    b.HasOne("Entities.Concrete.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId");
                 });
 #pragma warning restore 612, 618
         }

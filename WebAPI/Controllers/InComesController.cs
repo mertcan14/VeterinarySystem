@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
         [HttpGet("delete/{id}")]
         public IActionResult Delete(int id)
         {
-            var result = _inComeService.GetById(id);
+            var result = _inComeService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);

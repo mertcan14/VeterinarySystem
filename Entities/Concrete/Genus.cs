@@ -11,5 +11,6 @@ namespace Entities.Concrete
         public string Name { get; set; }
 
         public Animal Animal { get; set; }
+        public List<Pet> Pets { get; set; }
     }
 }

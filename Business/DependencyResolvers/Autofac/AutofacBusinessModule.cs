@@ -55,6 +55,27 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<InComeManager>().As<IInComeService>().SingleInstance();
             builder.RegisterType<EfInComeDal>().As<IInComeDal>().SingleInstance();
 
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+
+            builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();
+            builder.RegisterType<EfCustomerDal>().As<ICustomerDal>().SingleInstance();
+
+            builder.RegisterType<GenderManager>().As<IGenderService>().SingleInstance();
+            builder.RegisterType<EfGenderDal>().As<IGenderDal>().SingleInstance();
+
+            builder.RegisterType<PetManager>().As<IPetService>().SingleInstance();
+            builder.RegisterType<EfPetDal>().As<IPetDal>().SingleInstance();
+
+            builder.RegisterType<AppointmentManager>().As<IAppointmentService>().SingleInstance();
+            builder.RegisterType<EfAppointmentDal>().As<IAppointmentDal>().SingleInstance();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
+
+            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
+            builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
