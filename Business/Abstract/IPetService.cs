@@ -10,8 +10,8 @@ namespace Business.Abstract
     {
         IResult Add(Pet pet);
         IResult Update(Pet pet);
-        IResult GetAll();
-        IResult GetById(int id);
+        IDataResult<List<Pet>> GetAll();
+        IDataResult<Pet> GetById(int id);
         IResult Delete(int id);
     }
 }

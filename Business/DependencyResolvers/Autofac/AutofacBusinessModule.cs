@@ -76,6 +76,18 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
 
+            builder.RegisterType<TransactionsManager>().As<ITransactionsService>().SingleInstance();
+            builder.RegisterType<EfTransactionsDal>().As<ITransactionsDal>().SingleInstance();
+
+            builder.RegisterType<UsedProductManager>().As<IUsedProductService>().SingleInstance();
+            builder.RegisterType<EfUsedProductDal>().As<IUsedProductDal>().SingleInstance();
+
+            builder.RegisterType<SaleManager>().As<ISaleService>().SingleInstance();
+            builder.RegisterType<EfSaleDal>().As<ISaleDal>().SingleInstance();
+
+            builder.RegisterType<SaledProductManager>().As<ISaledProductService>().SingleInstance();
+            builder.RegisterType<EfSaledProductDal>().As<ISaledProductDal>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

@@ -8,5 +8,6 @@ namespace DataAccess.Abstract
 {
     public interface IAppointmentDal : IEntityRepository<Appointment>
     {
+        bool AppointmentAvailable(DateTime appointmentDate, DateTime appointmentExitDate);
     }
 }

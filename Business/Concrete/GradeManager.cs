@@ -32,12 +32,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<Grade>> GetAll()
         {
             return new SuccessDataResult<List<Grade>>(Messages.ListedSuccess, _gradeDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Grade> GetById(int id)
         {
             return new SuccessDataResult<Grade>(Messages.ListedSuccess,_gradeDal.Get(g=> g.Id == id));
         }

@@ -13,8 +13,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(e => e.Price).NotEmpty();
             RuleFor(e => e.Price).GreaterThan(0);
 
-            RuleFor(e => e.Date).NotEmpty();
-            RuleFor(e => e.Date).Must(DateValid).WithMessage("Tarih girislerini gelecekten yapamazsınız");
+            RuleFor(e => e.AddedDate).NotEmpty();
+            RuleFor(e => e.AddedDate).Must(DateValid).WithMessage("Tarih girislerini gelecekten yapamazsınız");
         }
 
         private bool DateValid(DateTime dateTime)

@@ -18,12 +18,12 @@ namespace Business.Concrete
             _genderDal = genderDal;
         }
 
-        public IResult GetAll()
+        public IDataResult<List<Gender>> GetAll()
         {
             return new SuccessDataResult<List<Gender>>(Messages.ListedSuccess, _genderDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Gender> GetById(int id)
         {
             return new SuccessDataResult<Gender>(Messages.ListedSuccess, _genderDal.Get(g => g.Id == id));
         }

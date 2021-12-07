@@ -9,10 +9,10 @@ namespace Business.Abstract
     public interface IDistrictService
     {
         IResult Add(District district);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<District> GetById(int id);
+        IDataResult<List<District>> GetAll();
         IResult Update(District district);
         IResult Delete(int id);
-        IResult GetByCityId(int id);
+        IDataResult<List<District>> GetByCityId(int id);
     }
 }

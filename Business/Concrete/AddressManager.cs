@@ -32,17 +32,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<Address>> GetAll()
         {
             return new SuccessDataResult<List<Address>>(Messages.ListedSuccess, _addressDal.GetAll());
         }
 
-        public IResult GetByCityId(int id)
+        public IDataResult<List<Address>> GetByCityId(int id)
         {
             return new SuccessDataResult<List<Address>>(Messages.ListedSuccess, _addressDal.GetAll(a=>a.District.City.Id==id));
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Address> GetById(int id)
         {
             return new SuccessDataResult<Address>(Messages.ListedSuccess, _addressDal.Get(a=> a.Id == id));
         }

@@ -33,12 +33,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<HospitalCategory>> GetAll()
         {
             return new SuccessDataResult<List<HospitalCategory>>(Messages.ListedSuccess, _hospitalCategoryDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<HospitalCategory> GetById(int id)
         {
             return new SuccessDataResult<HospitalCategory>(Messages.ListedSuccess, _hospitalCategoryDal.Get(h=> h.Id == id));
         }

@@ -10,6 +10,7 @@ namespace Entities.Concrete
         public int Id { get; set; }
         public string Definition { get; set; }
         public DateTime AppointmentDate { get; set; }
+        public DateTime AppointmentExitDate { get; set; }
         public DateTime AddedDate { get; set; }
 
         public Pet Pet { get; set; }

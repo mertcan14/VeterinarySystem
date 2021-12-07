@@ -19,7 +19,7 @@ namespace Business.Concrete
             _accoutingDal = accoutingDal;
         }
 
-        public IResult Get()
+        public IDataResult<Accouting> Get()
         {
             return new SuccessDataResult<Accouting>(Messages.ListedSuccess, _accoutingDal.GetAll().First());
         }

@@ -33,17 +33,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<District>> GetAll()
         {
             return new SuccessDataResult<List<District>>(Messages.ListedSuccess, _districtDal.GetAll());
         }
 
-        public IResult GetByCityId(int id)
+        public IDataResult<List<District>> GetByCityId(int id)
         {
             return new SuccessDataResult<List<District>>(Messages.ListedSuccess, _districtDal.GetAll(d=> d.City.Id == id));
         }
 
-        public IResult GetById(int id)
+        public IDataResult<District> GetById(int id)
         {
             return new SuccessDataResult<District>(Messages.ListedSuccess, _districtDal.Get(c=> c.Id == id));
         }

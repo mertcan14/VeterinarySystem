@@ -9,10 +9,10 @@ namespace Business.Abstract
     public interface IAddressService
     {
         IResult Add(Address address);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<Address> GetById(int id);
+        IDataResult<List<Address>> GetAll();
         IResult Update(Address address);
         IResult Delete(int id);
-        IResult GetByCityId(int id);
+        IDataResult<List<Address>> GetByCityId(int id);
     }
 }

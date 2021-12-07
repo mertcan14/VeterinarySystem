@@ -20,8 +20,14 @@ namespace Business.Concrete
 
         public IResult Add(Appointment appointment)
         {
-            _appointmentDal.Add(appointment);
-            return new SuccessResult(Messages.AddedSuccess);
+
+            if (_appointmentDal.AppointmentAvailable(appointment.AppointmentDate,appointment.AppointmentExitDate))
+            {
+                _appointmentDal.Add(appointment);
+                return new SuccessResult(Messages.AddedSuccess);
+            }
+
+            return new ErrorResult(Messages.AddedError);
         }
 
         public IResult Delete(int id)
@@ -30,14 +36,21 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<Appointment>> GetAll()
         {
             return new SuccessDataResult<List<Appointment>>(Messages.ListedSuccess, _appointmentDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Appointment> GetById(int id)
         {
             return new SuccessDataResult<Appointment>(Messages.ListedSuccess, _appointmentDal.Get(a=> a.Id == id));
+        }
+
+        public IDataResult<List<Appointment>> GetByNow()
+        {
+            DateTime now =  DateTime.Now;
+            var result = _appointmentDal.GetAll(a => a.AppointmentDate.Year == now.Year && a.AppointmentDate.Day == now.Day && a.AppointmentDate.Month == now.Month);
+            return new SuccessDataResult<List<Appointment>>(Messages.ListedSuccess, result);
         }
 
         public IResult Update(Appointment appointment)

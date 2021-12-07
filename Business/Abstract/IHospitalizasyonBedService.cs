@@ -11,8 +11,8 @@ namespace Business.Abstract
         IResult Add(HospitalizasyonBed hospitalizasyonBed);
         IResult Update(HospitalizasyonBed hospitalizasyonBed);
         IResult Delete(int id);
-        IResult GetById(int id);
-        IResult GetAll();
-        IResult GetByCategoryId(int categoryId);
+        IDataResult<HospitalizasyonBed> GetById(int id);
+        IDataResult<List<HospitalizasyonBed>> GetAll();
+        IDataResult<List<HospitalizasyonBed>> GetByCategoryId(int categoryId);
     }
 }

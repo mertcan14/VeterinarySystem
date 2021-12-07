@@ -11,7 +11,9 @@ namespace Business.Abstract
         IResult Add(InCome ınCome);
         IResult Update(InCome ınCome);
         IResult Delete(int id);
+        IResult DeleteByDate(DateTime date);
         IResult GetById(int id);
+        IDataResult<InCome> GetByAddedDate(DateTime date);
         IResult GetAll();
     }
 }

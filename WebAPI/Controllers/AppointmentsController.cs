@@ -53,6 +53,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getbynow")]
+        public IActionResult GetByNow()
+        {
+            var result = _appointmentService.GetByNow();
+            if (result.Success)
+            {
+                return Ok(result.Data[0].Pet.Name);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("delete/{id}")]
         public IActionResult Delete(int id)
         {

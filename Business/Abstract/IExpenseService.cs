@@ -11,7 +11,7 @@ namespace Business.Abstract
         IResult Add(Expense expense);
         IResult Update(Expense expense);
         IResult Delete(int id);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<Expense> GetById(int id);
+        IDataResult<List<Expense>> GetAll();
     }
 }

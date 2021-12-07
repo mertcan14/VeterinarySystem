@@ -9,8 +9,8 @@ namespace Business.Abstract
     public interface IGradeService
     {
         IResult Add(Grade grade);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<Grade> GetById(int id);
+        IDataResult<List<Grade>> GetAll();
         IResult Update(Grade grade);
         IResult Delete(int id);
     }

@@ -11,7 +11,7 @@ namespace Business.Abstract
         IResult Add(HospitalCategory hospitalCategory);
         IResult Update(HospitalCategory hospitalCategory);
         IResult Delete(int id);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<HospitalCategory> GetById(int id);
+        IDataResult<List<HospitalCategory>> GetAll();
     }
 }

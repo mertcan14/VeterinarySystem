@@ -10,8 +10,8 @@ namespace Business.Abstract
     {
         IResult Add(Category category);
         IResult Update(Category category);
-        IResult GetAll();
-        IResult GetById(int id);
+        IDataResult<List<Category>> GetAll();
+        IDataResult<Category> GetById(int id);
         IResult Delete(int id);
     }
 }

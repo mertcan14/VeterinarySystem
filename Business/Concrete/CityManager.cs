@@ -41,12 +41,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<City>> GetAll()
         {
             return new SuccessDataResult<List<City>>(Messages.ListedSuccess, _cityDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<City> GetById(int id)
         {
             return new SuccessDataResult<City>(Messages.ListedSuccess,_cityDal.Get(c => c.Id == id));
         }

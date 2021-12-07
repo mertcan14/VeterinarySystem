@@ -13,7 +13,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(i => i.Price).NotEmpty();
             RuleFor(i => i.Price).GreaterThan(0);
 
-            RuleFor(i => i.Date).Must(DateValid).WithMessage("Tarih ileri zamanlı olamaz");
+            RuleFor(i => i.AddedDate).Must(DateValid).WithMessage("Tarih ileri zamanlı olamaz");
         }
 
         private bool DateValid(DateTime dateTime)

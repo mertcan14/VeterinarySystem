@@ -11,7 +11,7 @@ namespace Business.Abstract
         IResult Add(Company company);
         IResult Update(Company company);
         IResult Delete(int id);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<Company> GetById(int id);
+        IDataResult<List<Company>> GetAll();
     }
 }

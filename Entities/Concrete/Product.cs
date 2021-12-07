@@ -13,6 +13,7 @@ namespace Entities.Concrete
         public int StockQuantity { get; set; }
 
         public Category Category { get; set; }
-        public Transactions Transactions { get; set; }
+        public List<UsedProduct> UsedProducts { get; set; }
+        public List<SaledProduct> SaledProducts { get; set; }
     }
 }

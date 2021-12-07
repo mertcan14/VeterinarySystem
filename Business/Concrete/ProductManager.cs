@@ -33,12 +33,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
             return new SuccessDataResult<List<Product>>(Messages.ListedSuccess, _productDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Product> GetById(int id)
         {
             return new SuccessDataResult<Product>(Messages.ListedSuccess, _productDal.Get(p=>p.Id == id));
         }

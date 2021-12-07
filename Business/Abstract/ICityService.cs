@@ -9,8 +9,8 @@ namespace Business.Abstract
     public interface ICityService
     {
         IResult Add(City city);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<City> GetById(int id);
+        IDataResult<List<City>> GetAll();
         IResult Update(City city);
         IResult Delete(int id);
     }

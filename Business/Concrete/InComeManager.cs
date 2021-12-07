@@ -33,9 +33,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
+        public IResult DeleteByDate(DateTime date)
+        {
+            _inComeDal.Delete(_inComeDal.Get(i => i.AddedDate == date));
+            return new SuccessResult(Messages.DeletedSuccess);
+        }
+
         public IResult GetAll()
         {
             return new SuccessDataResult<List<InCome>>(Messages.ListedSuccess, _inComeDal.GetAll());
+        }
+
+        public IDataResult<InCome> GetByAddedDate(DateTime date)
+        {
+            return new SuccessDataResult<InCome>(Messages.ListedSuccess, _inComeDal.Get(i => i.AddedDate == date));
         }
 
         public IResult GetById(int id)

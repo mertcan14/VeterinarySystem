@@ -33,17 +33,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<HospitalizasyonBed>> GetAll()
         {
             return new SuccessDataResult<List<HospitalizasyonBed>>(Messages.ListedSuccess, _hospitalizasyonBedDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<HospitalizasyonBed> GetById(int id)
         {
             return new SuccessDataResult<HospitalizasyonBed>(Messages.ListedSuccess, _hospitalizasyonBedDal.Get(h=> h.Id == id));
         }
 
-        public IResult GetByCategoryId(int categoryId)
+        public IDataResult<List<HospitalizasyonBed>> GetByCategoryId(int categoryId)
         {
             return new SuccessDataResult<List<HospitalizasyonBed>>(Messages.ListedSuccess, _hospitalizasyonBedDal.GetAll(h=> h.HospitalCategory.Id==categoryId));
         }

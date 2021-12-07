@@ -107,6 +107,9 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("AppointmentExitDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Definition")
                         .HasColumnType("nvarchar(max)");
 
@@ -218,7 +221,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Price")
@@ -349,7 +352,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Price")
@@ -423,16 +426,62 @@ namespace DataAccess.Migrations
                     b.Property<int>("StockQuantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TransactionsId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("TransactionsId");
-
                     b.ToTable("products");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("sales");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.SaledProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SaleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SaleId");
+
+                    b.ToTable("saledProducts");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Transactions", b =>
@@ -442,7 +491,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -459,6 +508,34 @@ namespace DataAccess.Migrations
                     b.HasIndex("PetId");
 
                     b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.UsedProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TransactionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("TransactionsId");
+
+                    b.ToTable("usedProducts");
                 });
 
             modelBuilder.Entity("Entities.Concrete.User", b =>
@@ -573,10 +650,24 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Concrete.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
+                });
 
-                    b.HasOne("Entities.Concrete.Transactions", "Transactions")
-                        .WithMany("Products")
-                        .HasForeignKey("TransactionsId");
+            modelBuilder.Entity("Entities.Concrete.Sale", b =>
+                {
+                    b.HasOne("Entities.Concrete.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.SaledProduct", b =>
+                {
+                    b.HasOne("Entities.Concrete.Product", "Product")
+                        .WithMany("SaledProducts")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("Entities.Concrete.Sale", "Sale")
+                        .WithMany("SaledProducts")
+                        .HasForeignKey("SaleId");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Transactions", b =>
@@ -584,6 +675,17 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Concrete.Pet", "Pet")
                         .WithMany()
                         .HasForeignKey("PetId");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.UsedProduct", b =>
+                {
+                    b.HasOne("Entities.Concrete.Product", "Product")
+                        .WithMany("UsedProducts")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("Entities.Concrete.Transactions", "Transactions")
+                        .WithMany("UsedProducts")
+                        .HasForeignKey("TransactionsId");
                 });
 #pragma warning restore 612, 618
         }

@@ -28,7 +28,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AddedSuccess);
         }
 
-        public IResult BedAvailable(CheckBedAvailable checkBedAvailable)
+        public IDataResult<List<HospitalizasyonBed>> BedAvailable(CheckBedAvailable checkBedAvailable)
         {
             var result = _hospitalizasyonDal.BedAvailable(checkBedAvailable.EntryDate, checkBedAvailable.ReleaseDate, checkBedAvailable.BedCategoryId);
             return new SuccessDataResult<List<HospitalizasyonBed>>(Messages.ListedSuccess, result);
@@ -40,12 +40,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.DeletedSuccess);
         }
 
-        public IResult GetAll()
+        public IDataResult<List<Hospitalizasyon>> GetAll()
         {
             return new SuccessDataResult<List<Hospitalizasyon>>(Messages.ListedSuccess, _hospitalizasyonDal.GetAll());
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Hospitalizasyon> GetById(int id)
         {
             return new SuccessDataResult<Hospitalizasyon>(Messages.ListedSuccess, _hospitalizasyonDal.Get(h=> h.Id == id));
         }

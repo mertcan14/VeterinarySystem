@@ -9,8 +9,8 @@ namespace Business.Abstract
     public interface IAnimalService
     {
         IResult Add(Animal animal);
-        IResult GetById(int id);
-        IResult GetAll();
+        IDataResult<Animal> GetById(int id);
+        IDataResult<List<Animal>> GetAll();
         IResult Update(Animal animal);
         IResult Delete(int id);
     }

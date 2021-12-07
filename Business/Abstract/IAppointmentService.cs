@@ -10,8 +10,9 @@ namespace Business.Abstract
     {
         IResult Add(Appointment appointment);
         IResult Update(Appointment appointment);
-        IResult GetAll();
-        IResult GetById(int id);
+        IDataResult<List<Appointment>> GetAll();
+        IDataResult<List<Appointment>> GetByNow();
+        IDataResult<Appointment> GetById(int id);
         IResult Delete(int id);
     }
 }

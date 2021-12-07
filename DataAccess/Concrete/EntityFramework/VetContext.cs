@@ -35,5 +35,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Category> categories { get; set; }
         public DbSet<Product> products { get; set; }
         public DbSet<Transactions> Transactions { get; set; }
+        public DbSet<UsedProduct> usedProducts { get; set; }
+        public DbSet<SaledProduct> saledProducts { get; set; }
+        public DbSet<Sale> sales { get; set; }
     }
 }
