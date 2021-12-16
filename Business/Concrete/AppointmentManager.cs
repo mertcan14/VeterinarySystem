@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -41,16 +42,21 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Appointment>>(Messages.ListedSuccess, _appointmentDal.GetAll());
         }
 
+        public IDataResult<List<Appointment>> GetAllByPetId(int petId)
+        {
+            return new SuccessDataResult<List<Appointment>>(Messages.ListedSuccess, _appointmentDal.GetAll(a=> a.PetId==petId)); 
+        }
+
         public IDataResult<Appointment> GetById(int id)
         {
             return new SuccessDataResult<Appointment>(Messages.ListedSuccess, _appointmentDal.Get(a=> a.Id == id));
         }
 
-        public IDataResult<List<Appointment>> GetByNow()
+        public IDataResult<List<AppointmentDetailDto>> GetByNow()
         {
             DateTime now =  DateTime.Now;
-            var result = _appointmentDal.GetAll(a => a.AppointmentDate.Year == now.Year && a.AppointmentDate.Day == now.Day && a.AppointmentDate.Month == now.Month);
-            return new SuccessDataResult<List<Appointment>>(Messages.ListedSuccess, result);
+            var result = _appointmentDal.GetAppointmentDetailDto(a => a.AppointmentDate.Year == now.Year && a.AppointmentDate.Day == now.Day && a.AppointmentDate.Month == now.Month);
+            return new SuccessDataResult<List<AppointmentDetailDto>>(Messages.ListedSuccess, result);
         }
 
         public IResult Update(Appointment appointment)

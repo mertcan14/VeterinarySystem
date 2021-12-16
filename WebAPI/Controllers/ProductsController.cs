@@ -53,6 +53,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getbycategoryid/{id}")]
+        public IActionResult GetByCategoryId(int id)
+        {
+            var result = _productService.GetByCategoryId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("delete/{id}")]
         public IActionResult Delete(int id)
         {

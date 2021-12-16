@@ -34,6 +34,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<HospitalizasyonBed>>(Messages.ListedSuccess, result);
         }
 
+        public IDataResult<List<HospitalizasyonBed>> BedBusy()
+        {
+            throw new NotImplementedException();
+        }
+
         public IResult Delete(int id)
         {
             _hospitalizasyonDal.Delete(_hospitalizasyonDal.Get(h=> h.Id == id));

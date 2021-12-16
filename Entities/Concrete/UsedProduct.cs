@@ -11,7 +11,9 @@ namespace Entities.Concrete
         public int Number { get; set; }
         public DateTime AddedDate { get; set; }
 
+        public int ProductId { get; set; }
         public Product Product { get; set; }
+        public int TransactionsId { get; set; }
         public Transactions Transactions { get; set; }
     }
 }

@@ -38,6 +38,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(Messages.ListedSuccess, _productDal.GetAll());
         }
 
+        public IDataResult<List<Product>> GetByCategoryId(int id)
+        {
+            return new SuccessDataResult<List<Product>>(Messages.ListedSuccess, _productDal.GetAll(p=> p.CategoryId == id));
+        }
+
         public IDataResult<Product> GetById(int id)
         {
             return new SuccessDataResult<Product>(Messages.ListedSuccess, _productDal.Get(p=>p.Id == id));

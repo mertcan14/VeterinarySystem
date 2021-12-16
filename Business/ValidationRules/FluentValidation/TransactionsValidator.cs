@@ -16,7 +16,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(t => t.Price).GreaterThan(0);
             RuleFor(t => t.Price).NotEmpty();
 
-            RuleFor(t => t.Pet).NotEmpty();
+            RuleFor(t => t.PetId).NotEmpty();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Entities.Concrete
         public DateTime AddedDate { get; set; }
         public int Price { get; set; }
 
+        public int PetId { get; set; }
         public Pet Pet { get; set; }
         public List<UsedProduct> UsedProducts { get; set; }
     }

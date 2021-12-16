@@ -12,6 +12,7 @@ namespace Entities.Concrete
         public string Company { get; set; }
         public int StockQuantity { get; set; }
 
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
         public List<UsedProduct> UsedProducts { get; set; }
         public List<SaledProduct> SaledProducts { get; set; }

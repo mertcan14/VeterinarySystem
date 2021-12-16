@@ -10,8 +10,6 @@ namespace Business.ValidationRules.FluentValidation
     {
         public ProductValidator()
         {
-            RuleFor(p => p.Category).NotEmpty();
-
             RuleFor(p => p.Company).NotEmpty();
             RuleFor(p => p.Company).MaximumLength(50);
 

@@ -53,6 +53,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getallgenusdetail")]
+        public IActionResult GetAllGenusDetail()
+        {
+            var result = _genusService.GetAllGenusDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getbyid/{id}")]
         public IActionResult GetById(int id)
         {

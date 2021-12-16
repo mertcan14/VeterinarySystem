@@ -49,7 +49,7 @@ namespace Business.Concrete
             return new SuccessDataResult<InCome>(Messages.ListedSuccess, _inComeDal.Get(i => i.AddedDate == date));
         }
 
-        public IResult GetById(int id)
+        public IDataResult<InCome> GetById(int id)
         {
             return new SuccessDataResult<InCome>(Messages.ListedSuccess, _inComeDal.Get(i=> i.Id==id));
         }

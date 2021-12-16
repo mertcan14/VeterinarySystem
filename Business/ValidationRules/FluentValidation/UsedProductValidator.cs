@@ -10,8 +10,8 @@ namespace Business.ValidationRules.FluentValidation
     {
         public UsedProductValidator()
         {
-            RuleFor(u => u.Product).NotEmpty();
-            RuleFor(u => u.Transactions).NotEmpty();
+            RuleFor(u => u.ProductId).NotEmpty();
+            RuleFor(u => u.TransactionsId).NotEmpty();
         }
     }
 }

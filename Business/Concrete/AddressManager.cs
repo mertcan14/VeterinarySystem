@@ -5,6 +5,7 @@ using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -45,6 +46,11 @@ namespace Business.Concrete
         public IDataResult<Address> GetById(int id)
         {
             return new SuccessDataResult<Address>(Messages.ListedSuccess, _addressDal.Get(a=> a.Id == id));
+        }
+
+        public IDataResult<List<AddressDetailDto>> GetDetailByUserId(int userId)
+        {
+            return new SuccessDataResult<List<AddressDetailDto>>(Messages.ListedSuccess, _addressDal.GetAllDetail(a => a.UserId == userId));
         }
 
         [ValidationAspect(typeof(AddressValidator))]

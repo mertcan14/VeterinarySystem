@@ -53,13 +53,24 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getallbypetid/{petId}")]
+        public IActionResult GetAllByPetId(int petId)
+        {
+            var result = _appointmentService.GetAllByPetId(petId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getbynow")]
         public IActionResult GetByNow()
         {
             var result = _appointmentService.GetByNow();
             if (result.Success)
             {
-                return Ok(result.Data[0].Pet.Name);
+                return Ok(result);
             }
             return BadRequest(result);
         }

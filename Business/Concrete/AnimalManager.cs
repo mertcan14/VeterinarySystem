@@ -5,6 +5,7 @@ using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -36,6 +37,11 @@ namespace Business.Concrete
         public IDataResult<List<Animal>> GetAll()
         {
             return new SuccessDataResult<List<Animal>>(Messages.ListedSuccess, _animalDal.GetAll());
+        }
+
+        public IDataResult<List<AnimalDetailDto>> GetAllAnimalDetail()
+        {
+            return new SuccessDataResult<List<AnimalDetailDto>>(Messages.ListedSuccess, _animalDal.GetAllAnimalDetail());
         }
 
         public IDataResult<Animal> GetById(int id)

@@ -53,6 +53,39 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getallbycustomerid/{id}")]
+        public IActionResult GetAllByCustomerId(int id)
+        {
+            var result = _petService.GetAllByCustomerId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getdetail/{id}")]
+        public IActionResult GetDetailById(int id)
+        {
+            var result = _petService.GetDetailById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getalldetail")]
+        public IActionResult GetAllDetail()
+        {
+            var result = _petService.GetAllDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("delete/{id}")]
         public IActionResult Delete(int id)
         {

@@ -20,21 +20,10 @@ namespace WebAPI.Controllers
             _companyService = companyService;
         }
 
-        [HttpPost("add")]
-        public IActionResult Add(Company company)
+        [HttpGet("get")]
+        public IActionResult GetById()
         {
-            var result = _companyService.Add(company);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("get/{id}")]
-        public IActionResult GetById(int id)
-        {
-            var result = _companyService.GetById(id);
+            var result = _companyService.Get();
             if (result.Success)
             {
                 return Ok(result);
@@ -46,28 +35,6 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _companyService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("delete/{id}")]
-        public IActionResult Delete(int id)
-        {
-            var result = _companyService.Delete(id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpPost("update")]
-        public IActionResult Update(Company company)
-        {
-            var result = _companyService.Update(company);
             if (result.Success)
             {
                 return Ok(result);

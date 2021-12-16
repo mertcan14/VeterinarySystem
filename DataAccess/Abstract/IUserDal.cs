@@ -8,5 +8,6 @@ namespace DataAccess.Abstract
 {
     public interface IUserDal : IEntityRepository<User>
     {
+        int AddReturnId(User user);
     }
 }

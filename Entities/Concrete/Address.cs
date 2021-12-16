@@ -13,7 +13,9 @@ namespace Entities.Concrete
         public string AddressTitle { get; set; }
         public string Definition { get; set; }
 
+        public int DistrictId { get; set; }
         public District District { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
     }
 }

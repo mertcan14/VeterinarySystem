@@ -12,6 +12,7 @@ namespace Entities.Concrete
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
+        public int UserId { get; set; }
         public User User { get; set; }
         public List<Pet> Pets { get; set; }
     }

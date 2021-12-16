@@ -26,6 +26,11 @@ namespace Business.Concrete
             _userDal.Add(user);
             return new SuccessResult(Messages.AddedSuccess);
         }
+        [ValidationAspect(typeof(UserValidator))]
+        public IDataResult<int> AddReturnId(User user)
+        {
+            return new SuccessDataResult<int>(Messages.AddedSuccess, _userDal.AddReturnId(user));
+        }
 
         public IResult Delete(int id)
         {

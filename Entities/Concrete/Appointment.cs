@@ -13,7 +13,10 @@ namespace Entities.Concrete
         public DateTime AppointmentExitDate { get; set; }
         public DateTime AddedDate { get; set; }
 
+        public int PetId { get; set; }
         public Pet Pet { get; set; }
+
+
 
     }
 }

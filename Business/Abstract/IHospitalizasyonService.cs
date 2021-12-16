@@ -15,5 +15,6 @@ namespace Business.Abstract
         IDataResult<Hospitalizasyon> GetById(int id);
         IDataResult<List<Hospitalizasyon>> GetAll();
         IDataResult<List<HospitalizasyonBed>> BedAvailable(CheckBedAvailable checkBedAvailable);
+        IDataResult<List<HospitalizasyonBed>> BedBusy();
     }
 }

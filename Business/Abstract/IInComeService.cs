@@ -12,7 +12,7 @@ namespace Business.Abstract
         IResult Update(InCome ınCome);
         IResult Delete(int id);
         IResult DeleteByDate(DateTime date);
-        IResult GetById(int id);
+        IDataResult<InCome> GetById(int id);
         IDataResult<InCome> GetByAddedDate(DateTime date);
         IResult GetAll();
     }

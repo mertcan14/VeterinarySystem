@@ -52,6 +52,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getalldetail")]
+        public IActionResult GetAllDetail()
+        {
+            var result = _transactionsService.GetAllDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("delete/{id}")]
         public IActionResult Delete(int id)
         {

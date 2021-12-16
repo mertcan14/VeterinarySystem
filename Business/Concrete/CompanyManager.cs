@@ -4,6 +4,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -28,6 +29,11 @@ namespace Business.Concrete
         {
             _companyDal.Delete(_companyDal.Get(c=> c.Id==id));
             return new SuccessResult(Messages.DeletedSuccess);
+        }
+
+        public IDataResult<Company> Get()
+        {
+            return new SuccessDataResult<Company>(Messages.ListedSuccess, _companyDal.GetAll().First());
         }
 
         public IDataResult<List<Company>> GetAll()

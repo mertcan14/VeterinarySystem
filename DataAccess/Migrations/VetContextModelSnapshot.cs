@@ -53,7 +53,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("Definition")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DistrictId")
+                    b.Property<int>("DistrictId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -62,7 +62,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -81,7 +81,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("GradeId")
+                    b.Property<int>("GradeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -113,7 +113,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("Definition")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PetId")
+                    b.Property<int>("PetId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -184,7 +184,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -201,7 +201,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -254,7 +254,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AnimalId")
+                    b.Property<int>("AnimalId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -307,7 +307,10 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("EntryDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("HospitalizasyonBedId")
+                    b.Property<int>("HospitalizasyonBedId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PetId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ReleaseDate")
@@ -316,6 +319,8 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("HospitalizasyonBedId");
+
+                    b.HasIndex("PetId");
 
                     b.ToTable("hospitalizasyons");
                 });
@@ -327,10 +332,10 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CompanyId")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HospitalCategoryId")
+                    b.Property<int>("HospitalCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -376,13 +381,13 @@ namespace DataAccess.Migrations
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GenderId")
+                    b.Property<int>("GenderId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GenusId")
+                    b.Property<int>("GenusId")
                         .HasColumnType("int");
 
                     b.Property<string>("MicrochipNumber")
@@ -391,9 +396,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PetId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -401,8 +403,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("GenderId");
 
                     b.HasIndex("GenusId");
-
-                    b.HasIndex("PetId");
 
                     b.ToTable("pets");
                 });
@@ -414,7 +414,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Company")
@@ -443,7 +443,7 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PetId")
+                    b.Property<int>("PetId")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
@@ -469,10 +469,10 @@ namespace DataAccess.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SaleId")
+                    b.Property<int>("SaleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -497,7 +497,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PetId")
+                    b.Property<int>("PetId")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
@@ -523,10 +523,10 @@ namespace DataAccess.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TransactionsId")
+                    b.Property<int>("TransactionsId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -566,126 +566,168 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("Entities.Concrete.District", "District")
                         .WithMany("Addresses")
-                        .HasForeignKey("DistrictId");
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entities.Concrete.User", "User")
                         .WithMany("Addresses")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Animal", b =>
                 {
                     b.HasOne("Entities.Concrete.Grade", "Grade")
                         .WithMany("Animals")
-                        .HasForeignKey("GradeId");
+                        .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Appointment", b =>
                 {
                     b.HasOne("Entities.Concrete.Pet", "Pet")
                         .WithMany("Appointments")
-                        .HasForeignKey("PetId");
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Customer", b =>
                 {
                     b.HasOne("Entities.Concrete.User", "User")
                         .WithMany("Customers")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.District", b =>
                 {
                     b.HasOne("Entities.Concrete.City", "City")
                         .WithMany("Districts")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Genus", b =>
                 {
                     b.HasOne("Entities.Concrete.Animal", "Animal")
                         .WithMany("Genus")
-                        .HasForeignKey("AnimalId");
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Hospitalizasyon", b =>
                 {
                     b.HasOne("Entities.Concrete.HospitalizasyonBed", "HospitalizasyonBed")
                         .WithMany("Hospitalizasyons")
-                        .HasForeignKey("HospitalizasyonBedId");
+                        .HasForeignKey("HospitalizasyonBedId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Concrete.Pet", "Pet")
+                        .WithMany("Hospitalizasyons")
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.HospitalizasyonBed", b =>
                 {
                     b.HasOne("Entities.Concrete.Company", "Company")
                         .WithMany("HospitalizasyonBeds")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entities.Concrete.HospitalCategory", "HospitalCategory")
                         .WithMany("HospitalizasyonBeds")
-                        .HasForeignKey("HospitalCategoryId");
+                        .HasForeignKey("HospitalCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Pet", b =>
                 {
                     b.HasOne("Entities.Concrete.Customer", "Customer")
                         .WithMany("Pets")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entities.Concrete.Gender", "Gender")
                         .WithMany("Pets")
-                        .HasForeignKey("GenderId");
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entities.Concrete.Genus", "Genus")
                         .WithMany("Pets")
-                        .HasForeignKey("GenusId");
-
-                    b.HasOne("Entities.Concrete.Pet", null)
-                        .WithMany("Pets")
-                        .HasForeignKey("PetId");
+                        .HasForeignKey("GenusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Product", b =>
                 {
                     b.HasOne("Entities.Concrete.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Sale", b =>
                 {
                     b.HasOne("Entities.Concrete.Pet", "Pet")
                         .WithMany()
-                        .HasForeignKey("PetId");
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.SaledProduct", b =>
                 {
                     b.HasOne("Entities.Concrete.Product", "Product")
                         .WithMany("SaledProducts")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entities.Concrete.Sale", "Sale")
                         .WithMany("SaledProducts")
-                        .HasForeignKey("SaleId");
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.Transactions", b =>
                 {
                     b.HasOne("Entities.Concrete.Pet", "Pet")
                         .WithMany()
-                        .HasForeignKey("PetId");
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Concrete.UsedProduct", b =>
                 {
                     b.HasOne("Entities.Concrete.Product", "Product")
                         .WithMany("UsedProducts")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entities.Concrete.Transactions", "Transactions")
                         .WithMany("UsedProducts")
-                        .HasForeignKey("TransactionsId");
+                        .HasForeignKey("TransactionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

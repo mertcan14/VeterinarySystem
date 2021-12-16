@@ -13,5 +13,6 @@ namespace Business.Abstract
         IDataResult<User> GetById(int id);
         IResult Delete(int id);
         IDataResult<List<User>> GetAll();
+        IDataResult<int> AddReturnId(User user);
     }
 }

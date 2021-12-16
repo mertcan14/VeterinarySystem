@@ -19,10 +19,6 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.BirthYear).NotEmpty();
 
             RuleFor(p => p.Color).NotEmpty();
-
-            RuleFor(p => p.Gender).NotEmpty();
-            RuleFor(p => p.Genus).NotEmpty();
-            RuleFor(p => p.Customer).NotEmpty();
         }
 
         private bool BirthValidator(int birthYear)
